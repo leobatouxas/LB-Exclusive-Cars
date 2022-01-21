@@ -6,6 +6,7 @@
  * Symfony CLI
  * Docker
  * Docker-composer
+ * Yarn
 
  Il est possible de vérifier les pré-requis à l'aide de la commande :
 
@@ -15,5 +16,7 @@ symfony check:requirements
 ### Lancer l'environement de développement
 ```bash
 docker-composer up -d
+yarn install
+yarn build
 symfony serve -d
 ```
