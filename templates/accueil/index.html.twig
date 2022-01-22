@@ -1,7 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilController!{% endblock %}
-
 {% block body %}
+<div class="h-full bg-cover bg-fixed w-full h-screen" style="background-image: url('/assets/img/background-accueil-modif.png');">
+    {% include "base/navbar.html.twig" %}
 
+            <h1 class="lg:text-6xl xl:text-8xl font-semibold text-center text-white" style="margin-top: 30vh;transform: translateY(-120%);">LBExclusiveCars</h1>
+
+</div>
+
+
+<script>
+
+{# Cacher le menu mobile lors du chargement de la page #}
+
+$(function () {
+    $('#mobile-menu').css('display', 'none');
+});
+
+{# Afficher le menu mobile #}
+
+$('#ButtonMenu').click(function () {
+    if ($('#mobile-menu').css('display') == 'none') {
+        $('#mobile-menu').css('display', 'block');
+        $('#mobile-menu').css('display', 'block');
+    } else {
+        $('#mobile-menu').css('display', 'none');
+    }
+
+});
+
+{# Afficher le menu profil #}
+$('#profil-button').click(function () {
+    if ($('#profil-menu').css('display') == 'none') {
+        $('#profil-menu').css('display', 'block');
+    } else {
+        $('#profil-menu').css('display', 'none');
+    }
+});
+</script>
 {% endblock %}
