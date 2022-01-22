@@ -41,13 +41,9 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Garage::class, mappedBy: 'utilisateurs')]
     private $garages;
 
-    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Vehicule::class)]
-    private $vehicules;
-
     public function __construct()
     {
         $this->garages = new ArrayCollection();
-        $this->vehicules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -190,36 +186,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->garages->removeElement($garage)) {
             $garage->removeUtilisateur($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Vehicule[]
-     */
-    public function getVehicules(): Collection
-    {
-        return $this->vehicules;
-    }
-
-    public function addVehicule(Vehicule $vehicule): self
-    {
-        if (!$this->vehicules->contains($vehicule)) {
-            $this->vehicules[] = $vehicule;
-            $vehicule->setUtilisateur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeVehicule(Vehicule $vehicule): self
-    {
-        if ($this->vehicules->removeElement($vehicule)) {
-            // set the owning side to null (unless already changed)
-            if ($vehicule->getUtilisateur() === $this) {
-                $vehicule->setUtilisateur(null);
-            }
         }
 
         return $this;

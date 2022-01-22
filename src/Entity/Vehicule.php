@@ -79,9 +79,6 @@ class Vehicule
     #[ORM\OneToMany(mappedBy: 'vehicule', targetEntity: Photo::class, orphanRemoval: true)]
     private $photos;
 
-    #[ORM\ManyToOne(targetEntity: Utilisateur::class, inversedBy: 'vehicules')]
-    private $utilisateur;
-
     #[ORM\ManyToOne(targetEntity: Garage::class, inversedBy: 'vehicules')]
     private $garage;
 
@@ -361,18 +358,6 @@ class Vehicule
                 $photo->setVehicule(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getUtilisateur(): ?Utilisateur
-    {
-        return $this->utilisateur;
-    }
-
-    public function setUtilisateur(?Utilisateur $utilisateur): self
-    {
-        $this->utilisateur = $utilisateur;
 
         return $this;
     }
