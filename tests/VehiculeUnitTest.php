@@ -10,6 +10,7 @@ use App\Entity\Modele;
 use App\Entity\NbPorte;
 use App\Entity\Photo;
 use App\Entity\Type;
+use App\Entity\Utilisateur;
 use App\Entity\Vehicule;
 use DateTime;
 use PHPUnit\Framework\TestCase;
@@ -28,6 +29,7 @@ class VehiculeUnitTest extends TestCase
         $NbPorte = new NbPorte();
         $CritAir = new CritAir();
         $Photo = new Photo();
+        $Utilisateur = new Utilisateur();
 
         $Vehicule->setNom('true')
                     ->setPrix('1,1')
@@ -51,6 +53,7 @@ class VehiculeUnitTest extends TestCase
                     ->setNbPorte($NbPorte)
                     ->setCritAir($CritAir)
                     ->addPhoto($Photo)
+                    ->setUtilisateur($Utilisateur)
         ;
 
         $this->assertTrue($Vehicule->getNom() === 'true');
@@ -75,6 +78,8 @@ class VehiculeUnitTest extends TestCase
         $this->assertTrue($Vehicule->getNbPorte() === $NbPorte);
         $this->assertTrue($Vehicule->getCritAir() === $CritAir);
         $this->assertContains($Photo, $Vehicule->getPhotos());
+        $this->assertTrue($Vehicule->getUtilisateur() === $Utilisateur);
+
     }
 
     public function testIsFalse(): void
@@ -103,6 +108,7 @@ class VehiculeUnitTest extends TestCase
                     ->setNbPorte(new NbPorte)
                     ->setCritAir(new CritAir)
                     ->addPhoto(new Photo)
+                    ->setUtilisateur(new Utilisateur)
         ;
 
         $this->assertFalse($Vehicule->getNom() === 'false');
@@ -127,6 +133,8 @@ class VehiculeUnitTest extends TestCase
         $this->assertFalse($Vehicule->getNbPorte() === new NbPorte);
         $this->assertFalse($Vehicule->getCritAir() === new CritAir);
         $this->assertNotContains(new Photo,$Vehicule->getPhotos());
+        $this->assertFalse($Vehicule->getUtilisateur() === new Utilisateur);
+
     }
 
     public function testIsEmpty(): void
@@ -155,5 +163,6 @@ class VehiculeUnitTest extends TestCase
         $this->assertEmpty($Vehicule->getNbPorte());
         $this->assertEmpty($Vehicule->getCritAir());
         $this->assertEmpty($Vehicule->getPhotos());
+        $this->assertEmpty($Vehicule->getUtilisateur());
     }
 }
