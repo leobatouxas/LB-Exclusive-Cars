@@ -121,7 +121,7 @@ class AppFixtures extends Fixture
         }
 
         //Création Véhicule
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 0; $i < 75; $i++) {
             $vehicule = new Vehicule();
             $vehicule->setNom($faker->word())
                 ->setPrix($faker->randomFloat(2, 1099, 199000))
