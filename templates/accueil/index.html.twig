@@ -1,10 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="h-full bg-cover bg-fixed w-full h-screen" style="background-image: url('/assets/img/background-accueil-modif.png');">
-    {% include "base/navbar.html.twig" %}
-
-            <h1 class="lg:text-6xl xl:text-8xl font-semibold text-center text-white" style="margin-top: 30vh;transform: translateY(-120%);">LBExclusiveCars</h1>
-
-</div>
+{% include "accueil/header.html.twig" %}
+{% include "accueil/content.html.twig" %}
 {% endblock %}

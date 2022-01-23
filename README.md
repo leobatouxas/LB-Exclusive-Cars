@@ -20,3 +20,12 @@ yarn install
 yarn build
 symfony serve -d
 ```
+### Ajouter des données de tests
+```bash
+symfony console doctrine:fixtures:load
+```
+
+### Lancer des tests
+```bash
+php bin/phpunit --testdox
+```
