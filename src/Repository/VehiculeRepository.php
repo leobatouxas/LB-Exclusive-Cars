@@ -19,6 +19,16 @@ class VehiculeRepository extends ServiceEntityRepository
         parent::__construct($registry, Vehicule::class);
     }
 
+    public function lastTree() 
+    {
+        return $this->createQueryBuilder('p')
+                ->orderBy('p.id', 'DESC')
+                ->setMaxResults(8)
+                ->getQuery()
+                ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Vehicule[] Returns an array of Vehicule objects
     //  */
