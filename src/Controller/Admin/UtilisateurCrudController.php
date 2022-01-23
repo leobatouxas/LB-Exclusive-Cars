@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Utilisateur;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class UtilisateurCrudController extends AbstractCrudController
@@ -25,7 +26,9 @@ class UtilisateurCrudController extends AbstractCrudController
                     ->setChoices([  'Utilisateur' => 'ROLE_USER',
                                     'Employé' => 'ROLE_EMPLOYE',
                                     'Administrateur' => 'ROLE_ADMIN']
-                                )
+            ),
+            AssociationField::new('garages')
+
         ];
     }
     

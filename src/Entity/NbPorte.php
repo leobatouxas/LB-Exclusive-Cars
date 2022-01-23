@@ -72,4 +72,9 @@ class NbPorte
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->nom;
+    }
 }

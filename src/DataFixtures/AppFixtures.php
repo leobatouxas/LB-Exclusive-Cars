@@ -138,6 +138,7 @@ class AppFixtures extends Fixture
                 ->setEnVente(true)
                 ->setSlug($faker->slug)
                 ->setGarage($garage)
+                ->setUtilisateur($utilisateur)
                 ->setModele($modeles[array_rand($modeles, 1)])
                 ->setCarburant($carburants[array_rand($carburants, 1)])
                 ->setBoiteVitesse($boiteVitesses[array_rand($boiteVitesses, 1)])
