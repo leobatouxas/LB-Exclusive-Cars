@@ -82,6 +82,10 @@ class Vehicule
     #[ORM\ManyToOne(targetEntity: Garage::class, inversedBy: 'vehicules')]
     private $garage;
 
+    #[ORM\ManyToOne(targetEntity: Utilisateur::class, inversedBy: 'vehicules')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $utilisateur;
+
     public function __construct()
     {
         $this->photos = new ArrayCollection();
@@ -370,6 +374,18 @@ class Vehicule
     public function setGarage(?Garage $garage): self
     {
         $this->garage = $garage;
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(?Utilisateur $utilisateur): self
+    {
+        $this->utilisateur = $utilisateur;
 
         return $this;
     }

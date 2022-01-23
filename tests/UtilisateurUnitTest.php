@@ -21,7 +21,9 @@ class UtilisateurUnitTest extends TestCase
                     ->setNom('nom')
                     ->setTelephone('telephone')
                     ->setAPropos('aPropos')
-                    ->addGarage($Garage);
+                    ->addGarage($Garage)
+                    ->addVehicule($Vehicule)
+        ;
 
         $this->assertTrue($Utilisateur->getEmail() === 'true@test.com');
         $this->assertTrue($Utilisateur->getPassword() === 'password');
@@ -30,6 +32,7 @@ class UtilisateurUnitTest extends TestCase
         $this->assertTrue($Utilisateur->getTelephone() === 'telephone');
         $this->assertTrue($Utilisateur->getAPropos() === 'aPropos');
         $this->assertContains($Garage, $Utilisateur->getGarages());
+        $this->assertContains($Vehicule, $Utilisateur->getVehicules());
     }
 
     public function testIsFalse(): void
@@ -39,12 +42,14 @@ class UtilisateurUnitTest extends TestCase
         $Vehicule = new Vehicule();
 
         $Utilisateur->setEmail('true@test.com')
-        ->setPassword('password')
-        ->setPrenom('prenom')
-        ->setNom('nom')
-        ->setTelephone('telephone')
-        ->setAPropos('aPropos')
-        ->addGarage($Garage);
+                ->setPassword('password')
+                ->setPrenom('prenom')
+                ->setNom('nom')
+                ->setTelephone('telephone')
+                ->setAPropos('aPropos')
+                ->addGarage($Garage)
+                ->addVehicule($Vehicule)
+        ;
 
 
         $this->assertFalse($Utilisateur->getEmail() === 'false@test.com');
@@ -54,6 +59,7 @@ class UtilisateurUnitTest extends TestCase
         $this->assertFalse($Utilisateur->getTelephone() === 'false');
         $this->assertFalse($Utilisateur->getAPropos() === 'false');
         $this->assertNotContains(new Garage, $Utilisateur->getGarages());
+        $this->assertNotContains(new Garage, $Utilisateur->getVehicules());
     }
 
     public function testIsEmpty(): void
@@ -66,5 +72,6 @@ class UtilisateurUnitTest extends TestCase
         $this->assertEmpty($Utilisateur->getTelephone());
         $this->assertEmpty($Utilisateur->getAPropos());
         $this->assertEmpty($Utilisateur->getGarages());
+        $this->assertEmpty($Utilisateur->getVehicules());
     }
 }
