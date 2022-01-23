@@ -18,7 +18,7 @@ class Vehicule
     #[ORM\Column(type: 'string', length: 255)]
     private $nom;
 
-    #[ORM\Column(type: 'decimal', precision: 6, scale: 2)]
+    #[ORM\Column(type: 'decimal', precision: 9, scale: 2)]
     private $prix;
 
     #[ORM\Column(type: 'text')]
