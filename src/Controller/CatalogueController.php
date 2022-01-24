@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class VehiculeController extends AbstractController
+class CatalogueController extends AbstractController
 {
     #[Route('/catalogue', name: 'app_catalogue')]
     public function index(VehiculeRepository $vehiculeRepository, PaginatorInterface $paginator, Request $request): Response
