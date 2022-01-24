@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PhotoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PhotoRepository;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: PhotoRepository::class)]
+#[Vich\Uploadable]
 class Photo
 {
     #[ORM\Id]
@@ -15,6 +18,9 @@ class Photo
 
     #[ORM\Column(type: 'string', length: 255)]
     private $nom;
+
+    #[Vich\UploadableField(mapping: 'vehicule_images', fileNameProperty: 'file')]
+    private ?File $imageFile;
 
     #[ORM\ManyToOne(targetEntity: Vehicule::class, inversedBy: 'photos')]
     #[ORM\JoinColumn(nullable: false)]
@@ -35,6 +41,16 @@ class Photo
         $this->nom = $nom;
 
         return $this;
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(File $file = null)
+    {
+        $this->imageFile = $file;
     }
 
     public function getVehicule(): ?Vehicule

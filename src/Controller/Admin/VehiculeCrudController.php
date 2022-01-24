@@ -3,13 +3,16 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Vehicule;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 
 class VehiculeCrudController extends AbstractCrudController
 {
@@ -39,7 +42,9 @@ class VehiculeCrudController extends AbstractCrudController
             TextField::new('codePostal')->hideOnIndex(),
             TextField::new('adresse'),
             BooleanField::new('enVente')->hideOnIndex(),
-            AssociationField::new('garage')
+            AssociationField::new('garage'),
+            CollectionField::new('photos')->setFormType(VichImageType::class),
+            ImageField::new('photos.nom')->setBasePath('/uploads/vehicules')
         ];
     }
 }
