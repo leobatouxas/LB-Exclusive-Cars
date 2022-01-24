@@ -76,7 +76,7 @@ class Vehicule
     #[ORM\ManyToOne(targetEntity: CritAir::class, inversedBy: 'vehicules')]
     private $critAir;
 
-    #[ORM\OneToMany(mappedBy: 'vehicule', targetEntity: Photo::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'vehicule', targetEntity: Photo::class, orphanRemoval: true, cascade: ['persist'])]
     private $photos;
 
     #[ORM\ManyToOne(targetEntity: Garage::class, inversedBy: 'vehicules')]
