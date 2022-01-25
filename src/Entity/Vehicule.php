@@ -71,6 +71,7 @@ class Vehicule
     private $photos;
 
     #[ORM\ManyToOne(targetEntity: Garage::class, inversedBy: 'vehicules')]
+    #[ORM\JoinColumn(nullable: false)]
     private $garage;
 
     #[ORM\ManyToOne(targetEntity: Utilisateur::class, inversedBy: 'vehicules')]
