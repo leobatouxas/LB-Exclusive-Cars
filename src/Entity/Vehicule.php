@@ -39,15 +39,6 @@ class Vehicule
     #[ORM\Column(type: 'smallint')]
     private $puissanceDin;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $ville;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $codePostal;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $adresse;
-
     #[ORM\Column(type: 'datetime')]
     private $dateAnnonce;
 
@@ -188,42 +179,6 @@ class Vehicule
     public function setPuissanceDin(int $puissanceDin): self
     {
         $this->puissanceDin = $puissanceDin;
-
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(string $ville): self
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    public function getCodePostal(): ?string
-    {
-        return $this->codePostal;
-    }
-
-    public function setCodePostal(string $codePostal): self
-    {
-        $this->codePostal = $codePostal;
-
-        return $this;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(string $adresse): self
-    {
-        $this->adresse = $adresse;
 
         return $this;
     }
