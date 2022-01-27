@@ -1,11 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Vehicule{% endblock %}
+{% block title %}Ajout Vehicule{% endblock %}
 
 {% block body %}
-    <h1>Create new Vehicule</h1>
-
-    {{ include('vehicule/_form.html.twig') }}
-
-    <a href="{{ path('vehicule_index') }}">back to list</a>
+	<h1 class="text-4xl text-center font-medium mx-2 my-4">Ajout Véhicule</h1>
+	{{ include('vehicule/_form.html.twig', {'button_label': 'Ajouter'}) }}
 {% endblock %}
