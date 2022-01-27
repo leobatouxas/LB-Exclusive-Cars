@@ -5,6 +5,7 @@ namespace App\Tests;
 use App\Entity\Photo;
 use App\Entity\Vehicule;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\File\File;
 
 class PhotoUnitTest extends TestCase
 {
@@ -13,11 +14,11 @@ class PhotoUnitTest extends TestCase
         $Photo = new Photo();
         $Vehicule = new Vehicule();
 
-        $Photo->setNom('nom')
-            ->setVehicule($Vehicule);
+        $Photo->setImageName('nom');
+        $Photo->setVehicule($Vehicule);
 
 
-        $this->assertTrue($Photo->getNom() === 'nom');
+        $this->assertTrue($Photo->getImageName() === 'nom');
         $this->assertTrue($Photo->getVehicule() === $Vehicule);
 
     }
@@ -27,10 +28,10 @@ class PhotoUnitTest extends TestCase
         $Photo = new Photo();
         $Vehicule = new Vehicule();
 
-        $Photo->setNom('nom')
-            ->setVehicule($Vehicule);
+        $Photo->setImageName('nom');
+        $Photo->setVehicule($Vehicule);
 
-        $this->assertFalse($Photo->getNom() === 'false');
+        $this->assertFalse($Photo->getImageName() === 'false');
         $this->assertFalse($Photo->getVehicule() === new Vehicule());
 
     }
@@ -39,7 +40,7 @@ class PhotoUnitTest extends TestCase
     {
         $Photo = new Photo();
 
-        $this->assertEmpty($Photo->getNom());
+        $this->assertEmpty($Photo->getImageName());
         $this->assertEmpty($Photo->getVehicule());
     }
 }
