@@ -1,0 +1,12 @@
+{% block _vehicule_photos_widget %}
+    <ul id="product-images-fields-list"
+        data-prototype="{{ form_widget(prototype)|e }}"
+        data-widget-tags="{{ '<li></li>'|e }}"
+        data-widget-counter="{{ value|length }}"
+    >
+        {% for key,vehiculeImageForm in form.children %}
+            {{ form_widget(vehiculeImageForm) }}
+        {% endfor %}
+        
+    </ul>
+{% endblock %}
