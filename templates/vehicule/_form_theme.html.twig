@@ -7,9 +7,6 @@
         {% for key,vehiculeImageForm in form.children %}
             {{ form_widget(vehiculeImageForm) }}
         {% endfor %}
+        
     </ul>
-
-    <button type="button"
-            class="add-another-collection-widget"
-            data-list-selector="#product-images-fields-list">Add another Product Image</button>
 {% endblock %}

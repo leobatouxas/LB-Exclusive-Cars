@@ -2,10 +2,19 @@
 	<h1 class="text-dark-800 text-center text-2xl">Voitures</h1>
 	<div class="container mx-auto flex items-center flex-wrap pt-2 pb-12">
 		{% for vehicule in vehicules %}
+		{# {% for photo in vehicule.photos %}
+		{{ dump(photo[0])}}
+		{% endfor %} #}
 			<div class="w-full lg:w-1/3 xl:w-1/4 p-6 flex flex-col justify-center">
 				<div class="flex justify-center">
 					<a href="#">
-						<img class="hover:grow hover:shadow-lg" src="https://via.placeholder.com/350x300" style="width:350px;height:300px;">
+							{% for photo in vehicule.photos %}
+								{% if loop.index == 1 %}
+									<img class="hover:grow hover:shadow-lg" src="/uploads/vehicules/{{ photo.imageName }}" style="width:350px;height:300px;">
+								{% endif %}
+							{% else %}
+								<img class="hover:grow hover:shadow-lg" src="https://via.placeholder.com/350x300" style="width:350px;height:300px;">
+							{% endfor %}
 						<div class="pt-3">
 							<div>
 								<p class="text-xl">{{vehicule.nom|u.truncate(20, '..', false)}}</p>

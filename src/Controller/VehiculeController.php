@@ -20,6 +20,7 @@ class VehiculeController extends AbstractController
     #[Route('/', name: 'vehicule_index', methods: ['GET'])]
     public function index(VehiculeRepository $vehiculeRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_EMPLOYE');
         return $this->render('vehicule/index.html.twig', [
             'vehicules' => $vehiculeRepository->findAll(),
         ]);
@@ -28,6 +29,7 @@ class VehiculeController extends AbstractController
     #[Route('/new', name: 'vehicule_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_EMPLOYE');
         $vehicule = new Vehicule();
         $form = $this->createForm(VehiculeType::class, $vehicule);
         $form->handleRequest($request);
@@ -64,7 +66,7 @@ class VehiculeController extends AbstractController
     #[Route('/{id}/edit', name: 'vehicule_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Vehicule $vehicule, EntityManagerInterface $entityManager): Response
     {
-
+        $this->denyAccessUnlessGranted('ROLE_EMPLOYE');
         //Gestion Motif
         $previousPhoto = new ArrayCollection();
         foreach ($vehicule->getPhotos() as $photo) {
@@ -102,9 +104,10 @@ class VehiculeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'vehicule_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'vehicule_delete', methods: ['POST'])]
     public function delete(Request $request, Vehicule $vehicule, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_EMPLOYE');
         if ($this->isCsrfTokenValid('delete'.$vehicule->getId(), $request->request->get('_token'))) {
             $entityManager->remove($vehicule);
             $entityManager->flush();
