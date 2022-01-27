@@ -15,6 +15,7 @@ symfony check:requirements
  ``` 
 ### Lancer l'environement de développement
 ```bash
+composer install
 docker-composer up -d
 yarn install
 yarn build

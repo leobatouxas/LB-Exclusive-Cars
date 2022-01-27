@@ -39,9 +39,6 @@ class VehiculeUnitTest extends TestCase
                     ->setCouleur('true')
                     ->setPuissanceFiscale(1)
                     ->setPuissanceDin(1)
-                    ->setVille('true')
-                    ->setCodePostal('true')
-                    ->setAdresse('true')
                     ->setDateAnnonce($Date)
                     ->setEnVente(true)
                     ->setSlug('true')  
@@ -64,9 +61,6 @@ class VehiculeUnitTest extends TestCase
         $this->assertTrue($Vehicule->getCouleur() === 'true');
         $this->assertTrue($Vehicule->getPuissanceFiscale() === 1);
         $this->assertTrue($Vehicule->getPuissanceDin() === 1);
-        $this->assertTrue($Vehicule->getVille() === 'true');
-        $this->assertTrue($Vehicule->getCodePostal() === 'true');
-        $this->assertTrue($Vehicule->getAdresse() === 'true');
         $this->assertTrue($Vehicule->getDateAnnonce() === $Date);
         $this->assertTrue($Vehicule->getEnVente() === true);
         $this->assertTrue($Vehicule->getSlug() === 'true');
@@ -94,9 +88,6 @@ class VehiculeUnitTest extends TestCase
                     ->setCouleur('true')
                     ->setPuissanceFiscale(1)
                     ->setPuissanceDin(1)
-                    ->setVille('true')
-                    ->setCodePostal('true')
-                    ->setAdresse('true')
                     ->setDateAnnonce(new DateTime())
                     ->setEnVente(true)
                     ->setSlug('true')  
@@ -119,9 +110,6 @@ class VehiculeUnitTest extends TestCase
         $this->assertFalse($Vehicule->getCouleur() === 'false');
         $this->assertFalse($Vehicule->getPuissanceFiscale() === 0);
         $this->assertFalse($Vehicule->getPuissanceDin() === 0);
-        $this->assertFalse($Vehicule->getVille() === 'false');
-        $this->assertFalse($Vehicule->getCodePostal() === 'false');
-        $this->assertFalse($Vehicule->getAdresse() === 'false');
         $this->assertFalse($Vehicule->getDateAnnonce() === new DateTime());
         $this->assertFalse($Vehicule->getEnVente() === false);
         $this->assertFalse($Vehicule->getSlug() === 'false');
@@ -149,9 +137,6 @@ class VehiculeUnitTest extends TestCase
         $this->assertEmpty($Vehicule->getCouleur());
         $this->assertEmpty($Vehicule->getPuissanceFiscale());
         $this->assertEmpty($Vehicule->getPuissanceDin());
-        $this->assertEmpty($Vehicule->getVille());
-        $this->assertEmpty($Vehicule->getCodePostal());
-        $this->assertEmpty($Vehicule->getAdresse());
         $this->assertEmpty($Vehicule->getDateAnnonce());
         $this->assertEmpty($Vehicule->getEnVente());
         $this->assertEmpty($Vehicule->getSlug());
