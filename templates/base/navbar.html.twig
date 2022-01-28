@@ -80,7 +80,20 @@
 	<!-- Mobile menu -->
 	<div class="block sm:hidden" id="mobile-menu">
 		<div class="px-2 pt-2 pb-3 space-y-1">
-			<a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+			<a href="{{ path('app_accueil') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
 		</div>
+		<div class="px-2 pt-2 pb-3 space-y-1">
+			<a href="{{ path('app_catalogue') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Catalogue</a>
+		</div>
+		{% if is_granted('ROLE_EMPLOYE') %}
+			<div class="px-2 pt-2 pb-3 space-y-1">
+				<a href="{{ path('vehicule_index') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Employe</a>
+			</div>
+		{% endif %}
+		{% if is_granted('ROLE_ADMIN') %}
+			<div class="px-2 pt-2 pb-3 space-y-1">
+				<a href="{{ path('admin') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Admin</a>
+			</div>
+		{% endif %}
 	</div>
 </nav>
