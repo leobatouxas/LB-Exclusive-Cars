@@ -1,5 +1,5 @@
-<section class="bg-white">
-	<h1 class="text-dark-800 text-center text-2xl">Voitures</h1>
+<section class="bg-white mt-20">
+	<h1 class="text-dark-800 text-center text-2xl">{{ title_label|default('Voitures') }}</h1>
 	<div class="container mx-auto flex items-center flex-wrap pt-2 pb-12">
 		{% for vehicule in vehicules %}
 		{# {% for photo in vehicule.photos %}
@@ -10,7 +10,7 @@
 					<a href="#">
 							{% for photo in vehicule.photos %}
 								{% if loop.index == 1 %}
-									<img class="hover:grow hover:shadow-lg" src="/uploads/vehicules/{{ photo.imageName }}" style="width:350px;height:300px;object-fit: cover;">
+									<img class="hover:grow hover:shadow-lg" src="{{ vich_uploader_asset(photo, 'imageFile') | imagine_filter('miniature') }}" style="width:350px;height:250px;object-fit: cover;">
 								{% endif %}
 							{% else %}
 								<img class="hover:grow hover:shadow-lg" src="https://via.placeholder.com/350x250" style="width:350px;height:250px;object-fit: cover;">

@@ -46,7 +46,7 @@ class VehiculeController extends AbstractController
             $entityManager->persist($vehicule);
             $entityManager->flush();
 
-            return $this->redirectToRoute('vehicule_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('vehicule_show',['id' => $vehicule->getId()]);
         }
 
         return $this->renderForm('vehicule/new.html.twig', [

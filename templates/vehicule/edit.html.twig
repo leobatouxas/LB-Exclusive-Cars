@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Vehicule
+{% block title %}LBExclusiveCars - Modfication Vehicule
 {% endblock %}
 
 {% block body %}
@@ -13,7 +13,7 @@
 				{{ include('vehicule/_delete_form.html.twig') }}
             </div>
 		</div>
-		{{ include('vehicule/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+		{% include 'vehicule/_form.html.twig' with {'button_label': 'Mettre à jour'} %}
 	</div>
 
 {% endblock %}
