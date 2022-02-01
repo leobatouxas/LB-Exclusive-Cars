@@ -1,62 +1,153 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}LBExclusiveCars - Vehicule{% endblock %}
+{% block title %}LBExclusiveCars - Vehicule
+{% endblock %}
 
 {% block body %}
-    <h1>Vehicule</h1>
+	<div class="container mx-auto">
+		<div class="flex flex-col items-center lg:items-stretch lg:justify-around lg:flex-row mt-24">
+			<div class="w-full lg:w-7/12 xl:w-8/12 2xl:w-7/12 flex flex-col flex-nowrap">
+				<div>
+					<h1 class="text-2xl">{{ vehicule.nom }}</h1>
+				</div>
+				{#  Carousel #}
+				<div class="swiper mySwiper w-full h-96 lg:h-4/6 my-2">
+					<div class="swiper-wrapper">
+						{% for photo in vehicule.photos %}
+							<div class="swiper-slide">
+								<img class="object-cover w-full h-full" src="{{ vich_uploader_asset(photo, 'imageFile') | imagine_filter('detailvehicule') }}" alt="image"/>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-pagination"></div>
+				</div>
+				<div class="bg-gray-300 w-full mx-auto text-gray-900 pb-5">
+					<div class="my-3 w-full flex justify-center">
+						<span class="text-xl border-b border-gray-800">Description</span>
+					</div>
+					<div class="flex flex-wrap justify-center w-full mx-auto">
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">Marque:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.modele.marque }}</span>
+						</div>
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">Modele:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.modele }}</span>
+						</div>
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">type:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.type }}</span>
+						</div>
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">Année:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.annee }}</span>
+						</div>
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">Kilometrage:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.kilometrage }} km</span>
+						</div>
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">Carburant:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.carburant }}</span>
+						</div>
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">Boite de vitesse:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.boiteVitesse }}</span>
+						</div>
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">Nombre porte:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.nbPorte }}</span>
+						</div>
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">Couleur:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.couleur }}</span>
+						</div>
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">Puissance Fiscale:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.puissanceFiscale }} cv</span>
+						</div>
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">Puissance Din:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.puissanceDin }} ch</span>
+						</div>
+						<div class="flex justify-center w-2/5 mx-auto">
+							<span class="w-1/2">CritAir:</span>
+							<span class="font-bold mx-2 w-1/4 text-right">{{ vehicule.critair }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ vehicule.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ vehicule.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ vehicule.prix }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ vehicule.description }}</td>
-            </tr>
-            <tr>
-                <th>Annee</th>
-                <td>{{ vehicule.annee }}</td>
-            </tr>
-            <tr>
-                <th>Kilometrage</th>
-                <td>{{ vehicule.kilometrage }}</td>
-            </tr>
-            <tr>
-                <th>Couleur</th>
-                <td>{{ vehicule.couleur }}</td>
-            </tr>
-            <tr>
-                <th>PuissanceFiscale</th>
-                <td>{{ vehicule.puissanceFiscale }}</td>
-            </tr>
-            <tr>
-                <th>PuissanceDin</th>
-                <td>{{ vehicule.puissanceDin }}</td>
-            </tr>
-            <tr>
-                <th>DateAnnonce</th>
-                <td>{{ vehicule.dateAnnonce ? vehicule.dateAnnonce|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>EnVente</th>
-                <td>{{ vehicule.enVente ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ vehicule.slug }}</td>
-            </tr>
-        </tbody>
-    </table>
+			{# Description #}
+			<div class="w-full lg:w-5/12 xl:w-4/12 2xl:w-3/12 h-full border rounded lg:my-16">
+				<div class="flex flex-col justify-center items-center bg-gray-800 text-white p-4 rounded-t">
+					<span class="text-xl text-center">Prix de vente TTC</span>
+					<span class="text-3xl text-center font-bold">{{ vehicule.prix|number_format(0, '.', ' ') }}
+						€</span>
+				</div>
+				<div class="my-2">
+					<div class="flex mx-10">
+						<span class="w-1/3">Marque:</span>
+						<span class="font-bold mx-2">{{ vehicule.modele.marque }}</span>
+					</div>
+					<div class="flex mx-10">
+						<span class="w-1/3">Modèle:</span>
+						<span class="font-bold mx-2">{{ vehicule.modele }}</span>
+					</div>
+					<div class="flex mx-10">
+						<span class="w-1/3">Année:</span>
+						<span class="font-bold mx-2">{{ vehicule.annee }}</span>
+					</div>
+					<div class="flex mx-10">
+						<span class="w-1/3">Kilométrage:</span>
+						<span class="font-bold mx-2">{{ vehicule.kilometrage }}
+							km</span>
+					</div>
+					<div class="flex mx-10">
+						<span class="w-1/3">Puissance:
+						</span>
+						<span class="font-bold mx-2">{{ vehicule.puissanceDin }}
+							ch</span>
+					</div>
+					<div class="flex mx-10">
+						<span class="w-1/3">Carburant:</span>
+						<span class="font-bold mx-2">{{ vehicule.carburant }}</span>
+					</div>
+					<div class="flex mx-10">
+						<span class="w-1/3">CritAir:</span>
+						<span class="font-bold mx-2">{{ vehicule.critAir }}</span>
+					</div>
+				</div>
+				<div class="flex flex-col justify-center mt-3">
+					<span class="text-xl text-center border-b  border-gray-800 mx-auto">Intéréssé ?</span>
+					<span class="text-center">Contactez-nous</span>
+					<a href="tel:{{ vehicule.garage.telephone }}" class="my-2 p-2 w-5/6 bg-gray-800 mx-auto text-center text-white">{{ vehicule.garage.telephone }}</a>
+					<a href="mailto:{{ vehicule.garage.email }}" class="my-2 p-2 w-5/6 bg-gray-800 mx-auto text-center text-white">{{ vehicule.garage.email }}</a>
+				</div>
+				<div class="flex flex-row-reverse lg:pb-2 py-5 mx-2">
+					<span class="text-gray-500">publiée le
+						{{ vehicule.dateAnnonce ? vehicule.dateAnnonce|format_datetime(locale='fr',pattern="EEEE dd MMMM YYYY") : '' }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-
-{% endblock %}
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+	var swiper = new Swiper(".mySwiper", {
+cssMode: true,
+loop: true,
+navigation: {
+nextEl: ".swiper-button-next",
+prevEl: ".swiper-button-prev"
+},
+pagination: {
+el: ".swiper-pagination"
+},
+mousewheel: true,
+keyboard: true
+});
+</script>{% endblock %}

@@ -8,11 +8,20 @@ liip_imagine:
             filters:
                 scale:
                     dim: [1920, 1080]
+                    
         miniature:
             quality: 75
             filters:
                 thumbnail:
                     size: [350, 250]
                     mode: outbound
+        
+        detailvehicule:
+            quality: 75
+            filters:
+                scale:
+                    dim: [1050, 900]
+
+        
         
 
